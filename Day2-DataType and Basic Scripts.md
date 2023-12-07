@@ -97,7 +97,7 @@ print(c)
 print(d)
 ```
 
-
+-----
 ### Strings
 - sequence of characters enclosed in quotes
 - immutable ordered data type
@@ -116,3 +116,21 @@ interface Tunnel0
  """
 print(i)
 ```
+
+Merge and repeats into one string
+```
+intf = 'interface'
+tun = 'Tunnel0'
+x = intf + tun
+print(x)
+
+y = intf + ' ' + tun
+print(y)
+
+z = intf * 5
+print(z)
+
+z = '#' * 40
+print(z)
+```
+
