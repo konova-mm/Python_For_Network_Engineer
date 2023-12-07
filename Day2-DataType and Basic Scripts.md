@@ -15,6 +15,7 @@ These data types, in turn, can be classified by several criteria:
 - unordered (sets)
 
 
+
 #### Numbers
 To perform various mathematical operations.
 #### Integer
@@ -38,6 +39,7 @@ To perform various mathematical operations.
 #### Round() Function
 
  Round a number to a given precision in decimal digits.
+ 
 `print(round(10/3.0, 2)`
 
 `print(round(10/3.0, 4))`
