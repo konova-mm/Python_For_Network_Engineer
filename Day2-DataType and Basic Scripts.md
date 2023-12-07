@@ -13,9 +13,7 @@ These data types, in turn, can be classified by several criteria:
 - immutable (integers, strings and tuples)
 - ordered (lists, tuples, strings and dictionaries)
 - unordered (sets)
-
-
-
+-----
 #### Numbers
 To perform various mathematical operations.
 #### Integer
@@ -29,13 +27,11 @@ To perform various mathematical operations.
 `print("2**3)`
 
 `print("10%7)`
-
-
+-----
 #### Float
 
 `print("10/3)`
-
-
+-----
 #### Round() Function
 
  Round a number to a given precision in decimal digits.
@@ -43,8 +39,7 @@ To perform various mathematical operations.
 `print(round(10/3.0, 2)`
 
 `print(round(10/3.0, 4))`
-
-
+-----
 #### Comparison operators
 `print(10 > 3.0)`
 
