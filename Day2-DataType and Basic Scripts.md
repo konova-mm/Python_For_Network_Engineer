@@ -27,10 +27,12 @@ To perform various mathematical operations.
 `print("2**3)`
 
 `print("10%7)`
+
 -----
 #### Float
 
 `print("10/3)`
+
 -----
 #### Round() Function
 
@@ -39,6 +41,7 @@ To perform various mathematical operations.
 `print(round(10/3.0, 2)`
 
 `print(round(10/3.0, 4))`
+
 -----
 #### Comparison operators
 `print(10 > 3.0)`
@@ -51,7 +54,19 @@ To perform various mathematical operations.
 
 `print(10 == 3)`
 
-`print(10 != 10`
+`print(10 != 10)`
+
+-----
+The int() function allows converting to int type.
+
+`a="11"
+print(a)
+print(int(a))`
+
+
+`b=5.555
+print(int(b))`
+
 
 
 
