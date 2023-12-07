@@ -18,20 +18,20 @@ These data types, in turn, can be classified by several criteria:
 To perform various mathematical operations.
 #### Integer
 
-`print("1+2)`
+`print(1+2)`
 
-`print("10-7)`
+`print(10-7)`
 
-`print("12*5)`
+`print(12*5)`
 
-`print("2**3)`
+`print(2**3)`
 
-`print("10%7)`
+`print(10%7)`
 
 -----
 #### Float
 
-`print("10/3)`
+`print(10/3)`
 
 -----
 #### Round() Function
@@ -146,7 +146,8 @@ To refer to a character from the
 end, you can specify negative values.
 
 ```
-print(string1[-1])
+str1 = 'interface FastEthernet1/0'
+print(str1[-1])
 ```
 
 Make string slices by specifying a number range. Slicing starts with first number (included) and ends at second number (excluded).
@@ -192,7 +193,7 @@ can be applied to strings, lists, dictionaries and so on, but startswith method 
 *****
 
 #### String methods
-hen automating, very often it will be necessary to work with strings, since config file, command output and commands sent - are strings. Knowledge of various methods (actions) that can be applied to strings helps to work with them more efficiently. Strings are immutable data type, so all methods that convert string returns a new string and the original string remains unchanged.
+When automating, very often it will be necessary to work with strings, since config file, command output and commands sent - are strings. Knowledge of various methods (actions) that can be applied to strings helps to work with them more efficiently. Strings are immutable data type, so all methods that convert string returns a new string and the original string remains unchanged.
 
 #### Methods upper, lower, swapcase, capitalize
 ```
