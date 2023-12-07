@@ -1,4 +1,4 @@
-### Python Data Types
+## Python Data Types
 Python has several data types:
 - Numbers
 - Strings
@@ -14,7 +14,7 @@ These data types, in turn, can be classified by several criteria:
 - ordered (lists, tuples, strings and dictionaries)
 - unordered (sets)
 -----
-#### Numbers
+### Numbers
 To perform various mathematical operations.
 #### Integer
 
@@ -95,4 +95,24 @@ print(a)
 print(b)
 print(c)
 print(d)
+```
+
+
+### Strings
+- sequence of characters enclosed in quotes
+- immutable ordered data type
+
+```
+name = "konova"
+print(name)
+
+i = """
+interface Tunnel0
+ ip address 10.10.10.1 255.255.255.0
+ ip mtu 1416
+ ip ospf hello-interval 5
+ tunnel source FastEthernet1/0
+ tunnel protection ipsec profile DMVPN
+ """
+print(i)
 ```
