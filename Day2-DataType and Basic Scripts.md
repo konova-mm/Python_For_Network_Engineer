@@ -17,7 +17,7 @@ These data types, in turn, can be classified by several criteria:
 
 #### Numbers
 To perform various mathematical operations.
-** Integer **
+#### Integer
 
 `print("1+2)`
 
@@ -30,13 +30,12 @@ To perform various mathematical operations.
 `print("10%7)`
 
 
-**Float**
+#### Float
 
 `print("10/3)`
 
 
-
-**Round() Function**
+#### Round() Function
 
  Round a number to a given precision in decimal digits.
 `print(round(10/3.0, 2)`
