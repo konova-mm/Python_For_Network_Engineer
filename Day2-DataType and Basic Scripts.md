@@ -180,5 +180,81 @@ a = '0123456789'
 print(a[::])
 print(a[::-1])
 ```
+len() function allows you to get number of characters in a string
+```
+line = 'interface Gi0/1'
+print(len(line))
+```
+*****
+Note: Function and method differ in that method is tied to a particular type of object and function is
+generally more universal and can be applied to objects of different types. For example, len function
+can be applied to strings, lists, dictionaries and so on, but startswith method only applies to strings.
+*****
 
+### String methods
+hen automating, very often it will be necessary to work with strings, since config file, command output and commands sent - are strings. Knowledge of various methods (actions) that can be applied to strings helps to work with them more efficiently. Strings are immutable data type, so all methods that convert string returns a new string and the original string remains unchanged.
+
+### Methods upper, lower, swapcase, capitalize
+```
+string1 = 'FastEthernet'
+print(string1.upper())
+print(string1.lower())
+print(string1.swapcase())
+
+string2 = 'tunnel 0'
+print(string2.capitalize())
+```
+
+### Method count
+Method count used to count how many times a character or substring occurs in a string.
+```
+string1 = 'Hello, hello, hello, hello'
+print(string1.count('hello'))
+print(string1.count('ello'))
+print(string1.count('l'))
+```
+
+### Method find
+You can pass a substring or character to find and it will return the lowest index where first character
+of the substring is (for the first match). If no match is found, find method returns -1.
+```
+string1 = 'interface FastEthernet0/1'
+print(string1.find('Fast'))
+print(string1[string1.find('Fast')::])
+```
+
+### Methods startswith, endswith
+Checking if a string starts or ends with certain symbols
+```
+string1 = 'FastEthernet0/1'
+print(string1.startswith('Fast'))
+print(string1.startswith('fast'))
+print(string1.endswith('0/1'))
+```
+
+### Method replace
+Replacing a sequence of characters in a string with another sequence.
+```
+string1 = 'FastEthernet0/1'
+print(string1.replace('Fast', 'Gigabit'))
+```
+
+### Method strip
+By default, strip method removes blank characters. This character set includes: \t\n\r\f\v
+```
+string1 = '\n\tinterface FastEthernet0/1\n'
+print(string1)
+interface FastEthernet0/1
+print(string1)
+print(string1.strip())
+```
+
+Method strip can be passed as an argument of any characters. Then at the beginning and at the
+end of the line all characters that were specified in the line will be removed.
+Method strip removes special characters at the beginning and at the end of the line. If you want
+to remove characters only on the left or only on the right, you can use lstrip and rstrip.
+```
+ad_metric = '[110/1045]'
+print(ad_metric.strip('[]'))
+```
 
