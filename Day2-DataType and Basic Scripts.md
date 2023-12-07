@@ -134,3 +134,51 @@ z = '#' * 40
 print(z)
 ```
 
+Strings are an ordered data type allows to refer to characters in a string by a number
+starting from zero.
+```
+str1 = 'interface FastEthernet1/0'
+print(str1[0])
+print(str1[11])
+```
+
+To refer to a character from the
+end, you can specify negative values.
+
+```
+print(string1[-1])
+```
+
+Make string slices by specifying a number range. Slicing starts with first number (included) and ends at second number (excluded).
+```
+str1 = 'interface FastEthernet1/0'
+print(str1[0:9])
+print(str1[10:22])
+```
+
+If no second number is specified, slice is until the end of string.
+```
+print(str1[10:])
+```
+Slice last three character of string.
+```
+print(str1[-3:])
+```
+Specify a step in slice. You can get odd numbers:
+```
+a = '0123456789'
+print(a[1::2])
+```
+you can get even numbers:
+```
+print(a[::2])
+```
+
+Get a string in reverse order.
+```
+a = '0123456789'
+print(a[::])
+print(a[::-1])
+```
+
+
