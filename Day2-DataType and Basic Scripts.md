@@ -59,8 +59,8 @@ To perform various mathematical operations.
 -----
 The int() function allows converting to int type.
 
-`a="11"
-print(a)
+`a="11" <br>
+print(a)<br>
 print(int(a))`
 
 
