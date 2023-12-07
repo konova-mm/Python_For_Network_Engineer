@@ -58,13 +58,13 @@ To perform various mathematical operations.
 
 -----
 The int() function allows converting to int type.
+``a=11
+print(a)
+print(int(a))``
 
-```a="11"
-print(a)<br>
-print(int(a))```
 
-```b=5.555
-print(int(b))```
+``b=5.555
+print(int(b))``
 
 
 
