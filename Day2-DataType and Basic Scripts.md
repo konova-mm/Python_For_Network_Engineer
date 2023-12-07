@@ -7,6 +7,7 @@ Python has several data types:
 - Tuples
 - Sets
 - Boolean
+
 These data types, in turn, can be classified by several criteria:
 - mutable (lists, dictionaries and sets)
 - immutable (integers, strings and tuples)
