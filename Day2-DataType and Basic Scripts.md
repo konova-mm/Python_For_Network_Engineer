@@ -71,8 +71,28 @@ b=5.555
 print(int(b))
 ```
 
+bin() function produces a binary representation of a number (note that the result is a string).
+```
+b = bin(8)
+print(b)
+print(bin(255)
+```
 
+function hex() produces a hexadecimal value
+```
+print(hex(10))
+```
 
-
- 
- 
+-----
+For more complex mathematical functions, Python has a math module:
+```
+import math
+a = math.sqrt(9)
+b = math.sqrt(10)
+c = math.factorial(3)
+d = math.pi
+print(a)
+print(b)
+print(c)
+print(d)
+```
