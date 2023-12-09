@@ -430,3 +430,81 @@ Dictionaries are mutable ordered data type:
 **Note**: In other programming languages a similar dictionary can be called an associative array,
 hash, or hash table.
 
+```
+london = {'name': 'London1', 'location': 'London Str'}
+print(london['name'])
+print(london['location'])
+```
+a new key-value pair could be added, or rewritten
+```
+london = {'name': 'London1', 'location': 'London Str'}
+london['vendor'] = 'Cisco'
+print(london)
+
+london['vendor'] = 'cisco ios'
+print(london)
+```
+
+#### Nested dictionary
+```
+london_co = {
+   'r1': {
+         'hostname': 'london_r1',
+         'location': '21 New Globe Walk',
+         'vendor': 'Cisco',
+         'model': '4451',
+         'ios': '15.4',
+         'ip': '10.255.0.1'
+         },
+   'r2': {
+        'hostname': 'london_r2',
+        'location': '21 New Globe Walk',
+        'vendor': 'Cisco',
+        'model': '4451',
+        'ios': '15.4',
+        'ip': '10.255.0.2'
+        },
+   'sw1': {
+       'hostname': 'london_sw1',
+       'location': '21 New Globe Walk',
+       'vendor': 'Cisco',
+       'model': '3850',
+       'ios': '3.6.XE',
+       'ip': '10.255.0.101'
+       }
+   }
+
+print(london_co['r1']['ios'])
+print(london_co['r1']['model'])
+print(london_co['sw1']['ip'])
+```
+
+### Dictionary methods
+Method **clear** allows to clear dictionary
+```
+london = {'name': 'London1', 'location': 'London Str'}
+london.clear()
+print(london)
+```
+
+Method **get** queries for key and if there is no key, returns None instead. Method get() also allows you to specify another value instead of None
+```
+london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
+print(london.get('ios'))
+print(london.get('ios', 'Ooops'))
+```
+
+Methods keys, values, items
+```
+london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
+print(london.keys())
+print(london.values())
+print(london.items())
+```
+
+Remove key and value
+```
+london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
+del london['name']
+print(london)
+```
