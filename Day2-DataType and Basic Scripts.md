@@ -306,7 +306,7 @@ IP address:
 {oct1:08b} {oct2:08b} {oct3:08b} {oct4:08b}''')
 ```
 
-strings concatenation
+#### strings concatenation
 Literal strings concatenation
 Python has very convenient functionality — literal strings concatenation
 s = ('Test' 'String')
@@ -323,7 +323,7 @@ List in Python is:
 - sequence of elements separated by comma and enclosed in square brackets
 - mutable ordered data type
 
-Creating a list using a literal
+#### Creating a list using a literal
 ```
 vlan = [10, 20, 30, 50]
 print(vlans)
@@ -334,7 +334,7 @@ print(lent(vlan))
 print(sorted(vlan))
 ```
 
-Create a list using list function
+#### Create a list using list function
 ```
 list1 = list('router')
 print(list1)
@@ -347,7 +347,7 @@ list[0] = nova
 print(list)
 ```
 
-nested lists
+#### nested lists
 ```
 interfaces = [['FastEthernet0/0', '15.0.15.1', 'YES', 'manual', 'up', 'up'],
               ['FastEthernet0/1', '10.0.1.1', 'YES', 'manual', 'up', 'up'],
@@ -356,4 +356,27 @@ interfaces[0][0]
 print(interfaces[2][0])
 print(interfaces[2][1])
 ```
+
+len() function returns number of items in list. And sorted function sorts list items in ascending order and returns a new list with sorted items
+```
+items = [1, 2, 3]
+print(len(items))
+
+names = ['John', 'Michael', 'Antony']
+print(sorted(names))
+```
+
+### List methods
+List is a mutable data type, so it is important to note that most list methods change a list in place
+without returning anything.
+
+Method **join** collects a list of strings into one string with separator specified before join. Method append adds specified item to the end of list.
+```
+vlans = ['10', '20', '30']
+v = ','.join(vlans)
+print(v)
+vlans.append('40')
+print(vlans)
+```
+
 
