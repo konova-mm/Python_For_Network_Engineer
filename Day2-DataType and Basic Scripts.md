@@ -370,13 +370,52 @@ print(sorted(names))
 List is a mutable data type, so it is important to note that most list methods change a list in place
 without returning anything.
 
-Method **join** collects a list of strings into one string with separator specified before join. Method append adds specified item to the end of list.
+Method **join** collects a list of strings into one string with separator specified before join. Method **append** adds specified item to the end of list.
 ```
 vlans = ['10', '20', '30']
-v = ','.join(vlans)
-print(v)
+','.join(vlans)
+print(vlans)
 vlans.append('40')
 print(vlans)
 ```
 
+To combine two lists you can use one of two methods: **extend** method or **addition** operation. These methods have an important difference: extend changes list to which method is applied and addition returns a new list that consists of two.
+```
+vlans = ['10', '20', '30', '100-200']
+vlans2 = ['300', '400', '500']
+vlans.extend(vlans2)
+print(vlans)
+
+result = vlans + vlans2
+print(result)
+```
+
+Method **pop** removes item that corresponds to specified number. Method **remove** removes specified item.
+```
+vlans = ['10', '20', '30', '100-200']
+vlans.pop(-1)
+print(vlans)
+vlans.remove('30')
+print(vlans)
+```
+
+Method **index*** - returns the first index of the passed value
+```
+vlans = ['10', '20', '30', '100-200']
+i = vlans.index('30')
+print(i)
+```
+
+Method **insert** allows to insert an item into a specific place in list
+```
+vlans = ['10', '20', '30', '100-200']
+vlans.insert(1, '15')
+print(vlans)
+```
+Method sort sorts list in place
+```
+vlans = [1, 50, 10, 15]
+vlans.sort()
+print(vlans)
+```
 
