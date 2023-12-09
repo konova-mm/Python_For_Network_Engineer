@@ -412,10 +412,21 @@ vlans = ['10', '20', '30', '100-200']
 vlans.insert(1, '15')
 print(vlans)
 ```
-Method sort sorts list in place
+Method **sort** sorts list in place
 ```
 vlans = [1, 50, 10, 15]
 vlans.sort()
 print(vlans)
 ```
+
+### Dictionary
+Dictionaries are mutable ordered data type:
+- data in dictionary are pairs key: value
+- values are accessible by key, not by number as in lists
+- entries in dictionary stored in order they were added
+- since dictionaries are mutable, dictionary items can be changed, added, removed
+- key must be an immutable object: number, string, tuple
+- value can be data of any type
+**Note**: In other programming languages a similar dictionary can be called an associative array,
+hash, or hash table.
 
