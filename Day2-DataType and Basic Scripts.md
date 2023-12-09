@@ -508,3 +508,107 @@ london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
 del london['name']
 print(london)
 ```
+
+Method **update** allows you to add contents of one dictionary to another dictionary. Values can be updated in the same way.
+```
+r1 = {'name': 'London1', 'location': 'London Str'}
+r1.update({'vendor': 'Cisco', 'ios':'15.2'})
+print(r1)
+
+r1.update({'name': 'london-r1', 'ios':'15.4'})
+print(r1)
+```
+
+A dictionary can be created with help of a **literal** and Construction **dict** allows you to create a dictionary.
+```
+r1 = {'model': '4451', 'ios': '15.4'}            #litral
+
+r1 = dict(model='4451', ios='15.4')
+r1 = dict([('model','4451'), ('ios','15.4')])
+```
+
+### Tuple
+Tuple in Python is:
+- a sequence of elements separated by a comma and enclosed in parentheses
+- immutable ordered data type
+Roughly speaking, a tuple is a list that can’t be changed. We can say that the tuple has read-only
+permissions. It could be a defense against accidental change.
+```
+tuple1 = tuple()  #empty tuple
+print(tuple1)
+tuple2 = ('password',)  ## with element
+print(tuple2)
+```
+
+#### Tuple from list
+```
+list_keys = ['hostname', 'location', 'vendor', 'model', 'ios', 'ip']
+tuple_keys = tuple(list_keys)
+print(tuple_keys)
+print(tuple_keys[0])
+
+# tuple_keys[1] = 'test'  ## will get error, that's immutable mean
+```
+
+### Set
+Set is a mutable unordered data type. Set always contains only unique elements. Set in Python is a
+sequence of elements that are separated by a comma and placed in curly braces. Set can easily remove repetitive elements:
+```
+vlans = [10, 20, 30, 40, 100, 10]
+s= set(vlans)
+print(s)
+```
+
+#### Set methods
+Method **add** adds an item to set
+```
+set1 = {10,20,30,40}
+set1.add(50)
+print(sorted(set1))
+```
+
+Method **discard** allows deleting elements without showing an error if there is no element in set. Method **clear** empties set.
+```
+set1 = {10, 20, 30, 40, 50}
+set1.discard(55)
+print(set1)
+
+set1.discard(50)
+print(set1)
+
+set1.clear()
+print(set1)
+```
+
+#### Operations with sets
+Union of sets can be obtained by **union** or operator **|**
+Intersection of sets can be obtained by **intersection** or operator **&**
+```
+vlans1 = {10,20,30,50,100}
+vlans2 = {100,101,102,102,200}
+u = vlans1.union(vlans2)
+print(u)
+print(vlans1 | vlans2)
+
+i = vlans1.intersection(vlans2)
+print(i)
+print(vlans1 & vlans2)
+```
+
+You cannot create an empty set using a literal set (in this case it will not be a set but a dictionary)
+```
+set1 = {}
+print(type(set1))
+
+#an empty set can be created in this way
+set2 = set()
+print(type(set2))
+
+#Set from string
+s = set('long long long long string')
+print(s)
+
+#Set from list:
+l = set([10, 20, 30, 10, 10, 30])
+print(l)
+```
