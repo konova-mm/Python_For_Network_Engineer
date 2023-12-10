@@ -612,3 +612,72 @@ print(s)
 l = set([10, 20, 30, 10, 10, 30])
 print(l)
 ```
+
+### Boolean values
+Boolean values in Python are two constants True and False.
+In Python, not only True and False are considered True and False values.
+**True value**
+- any non-zero number
+- any non-empty string
+- any non-empty object
+  
+ **False value:**
+- 0
+- None
+- empty string
+- empty object
+
+To check boolean value of object you can use bool
+```
+items = [1, 2, 3]
+empty_list = []
+print(bool(empty_list))
+print(bool(items))
+print(bool(0))
+print(bool(1))
+```
+
+### Types conversion
+Python has several useful built-in features that allow data to be converted from one type to another.
+
+**int** converts a string to int. Using int function you can convert a binary number into a decimal number (binary number must
+be written as a string)
+```
+print(int("10"))
+print(int("11111111", 2))
+```
+
+Function **list** converts an argument to a list
+```
+print(list("string"))
+print(list({1, 2, 3}))
+print(list((1, 2, 3, 4)))
+```
+
+Function **set** converts an argument into a set
+```
+print(set([1, 2, 3, 3, 4, 4, 4, 4]))
+print(set((1, 2, 3, 3, 4, 4, 4, 4)))
+print(set("string string"))
+```
+
+Function **tuple** converts argument into a tuple
+```
+print(tuple([1, 2, 3, 4]))
+print(tuple({1, 2, 3, 4}))
+print(tuple("string"))
+#This can be useful if you want an immutable object.
+```
+
+Function **str** converts an argument into a string:
+```
+print(str(10))
+```
+
+### Types checking
+**isdigit** method can be used to check whether a string consists only of digits
+```
+print("a".isdigit())
+print("a10".isdigit())
+print("10".isdigit())
+```
