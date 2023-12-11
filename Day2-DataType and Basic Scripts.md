@@ -681,3 +681,26 @@ print("a".isdigit())
 print("a10".isdigit())
 print("10".isdigit())
 ```
+
+Method **isalpha** makes it possible to check whether a string consists only of letters
+```
+print("a".isalpha())
+print("a100".isalpha())
+print("a-- ".isalpha())
+print("a ".isalpha())
+```
+
+Method **isalnum** makes it possible to check whether a string consists of letters or numbers
+```
+print("a".isalnum())
+print("a10".isalnum())
+```
+
+### Tasks
+#### ၁။ အောက်ပါ string (nat) မှ FastEthernet နေရာတွင် GigabitEthernet ကို အစားထိုးပြီး print ထုတ်ပြပါ။
+nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+
+#### ၂။ အောက်ပါ mac မှ semicolon (:) နေရာတွင် dot(.) အစားထိုးပြီး print ထုတ်ပြပါ။
+mac = "AAAA:BBBB:CCCC"
+
+#### ၃။ 
