@@ -698,9 +698,40 @@ print("a10".isalnum())
 
 ### Tasks
 #### ၁။ အောက်ပါ string (nat) မှ FastEthernet နေရာတွင် GigabitEthernet ကို အစားထိုးပြီး print ထုတ်ပြပါ။
+```
 nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+```
 
 #### ၂။ အောက်ပါ mac မှ semicolon (:) နေရာတွင် dot(.) အစားထိုးပြီး print ထုတ်ပြပါ။
+```
 mac = "AAAA:BBBB:CCCC"
+```
 
-#### ၃။ 
+#### ၃။ အောက်ပါ config string ထဲမှ ["1", "3", "10", "20", "30", "100"] ကို list ပုံစံဖြင့် variable တစ်ခုထဲ ထည့်သွင်းပြီး print ထုတ်ပြပါ။
+```
+config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+```
+
+#### ၄။ Netowrk Device များမှ ထုတ်ထားသော အောက်ပါ vlan list အတွင်းတွင် ထပ်နေသော vlan များကို ဖြတ်ထုတ်ပါ။ ဖြတ်ထုတ်ထားသော unique vlan များအား ascending order ဖြင့် စီပြီး print ထုတ်ပြပါ။
+```
+vlans = [10, 20, 30, 1, 2, 100, 10, 30, 3, 4, 10]
+```
+
+#### ၄။ အောက်ပါ cmd နှစ်ခုမှ ဘုံပါဝင်နေသော vlan နံပတ်(intersection)ကို list အနေဖြင့် variable ထဲထည့်သွင်းပြီး ထုတ်ပြပါ။ ( vlan နံပတ်သာ ဖြစ်ရမည်၊ ['1', '3', '8'] ကဲ့သို့ ဖြစ်ရမည်။
+```
+cmd1 = "switchport trunk allowed vlan 1,2,3,5,8"
+cmd2 = "switchport trunk allowed vlan 1,3,8,9"
+```
+
+#### ၅။ အောက်ဖော်ပြပါ ospf_route string အား ဒုတိယပုံစံကဲ့သို့ ဖြစ်အောင် ဖော်ပြပါ။
+```
+ospf_route = " 10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+```
+Answer be Like..
+```
+Prefix 10.0.24.0/24
+AD/Metric 110/41
+Next-Hop 10.0.13.3
+Last update 3d18h
+Outbound Interface FastEthernet0/0
+```
