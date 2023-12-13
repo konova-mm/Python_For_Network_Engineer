@@ -695,8 +695,8 @@ Method **isalnum** makes it possible to check whether a string consists of lette
 print("a".isalnum())
 print("a10".isalnum())
 ```
-
-### Tasks
+-----
+### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
 #### ၁။ အောက်ပါ string (nat) မှ FastEthernet နေရာတွင် GigabitEthernet ကို အစားထိုးပြီး print ထုတ်ပြပါ။
 ```
 nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
@@ -735,3 +735,20 @@ Next-Hop 10.0.13.3
 Last update 3d18h
 Outbound Interface FastEthernet0/0
 ```
+
+#### ၆။ mac string အား binary format string အဖြစ် ဖော်ပြပါ။ ( 101010101010101010111011101110111100110011001100)
+```
+mac = "AAAA:BBBB:CCCC"
+```
+
+#### ၇။ အောက်ဖော်ပြပါ ip string အား ဒုတိယပုံစံကဲ့သို့ ဖြစ်အောင် ဖော်ပြပါ။
+```
+ip = "192.168.3.1"
+```
+Answer be Like..
+```
+10 1 1 1
+00001010 00000001 00000001 00000001
+```
+
+-----
