@@ -750,5 +750,125 @@ Answer be Like..
 10 1 1 1
 00001010 00000001 00000001 00000001
 ```
+-----
+### Basic Scripts
+Generally speaking, script is a regular file. This file stores the sequence of commands that you want
+to execute.
+```
+access_template = ['switchport mode access',
+'switchport access vlan {}',
+'switchport nonegotiate',
+'spanning-tree portfast',
+'spanning-tree bpduguard enable']
+print('\n'.join(access_template).format(5))
+```
+Items in list are combined into a string that is separated by \n and VLAN number is inserted
+into string using string formatting.
 
+#### Executable file
+In order for a file to be executable and not have to write “python” every time before calling a file,
+you need to:
+- make file executable (for Linux)
+- the first line of file should have **#!/usr/bin/env python** or **#!/usr/bin/env python3** depend-
+ing on which version of Python is used by default
+```
+#!/usr/bin/env python3
+access_template = ['switchport mode access',
+'switchport access vlan {}',
+'switchport nonegotiate',
+'spanning-tree portfast',
+'spanning-tree bpduguard enable']
+print('\n'.join(access_template).format(5))
+```
+After that
+```
+chmod +x access_template_exec.py
+```
+Now you can call file like this:
+```
+$ ./access_template_exec.py
+```
+
+#### Passing arguments to the script (sys.argv)
+Very often script solves some common problem. For example, script processes a configuration file.
+Of course, in this case you don’t want to edit name of file every time with your hands in script. It
+will be much better to pass file name as script argument and then use already specified file. The
+sys module allows working with script arguments via argv.
+```
+from sys import argv
+interface = argv[1]
+vlan = argv[2]
+access_template = ['switchport mode access',
+'switchport access vlan {}',
+'switchport nonegotiate',
+'spanning-tree portfast',
+'spanning-tree bpduguard enable']
+print('interface {}'.format(interface))
+print('\n'.join(access_template).format(vlan))
+```
+```
+$ python access_argv.py Gi0/7 4
+```
+Arguments that have been passed to script are substituted as values in template.
+- argv is a list
+- all arguments are in list and represented as strings
+- argv contains not only arguments that passed to script but also name of script itself. First comes the name of script itself, then arguments in the same order.
+
+#### User input
+Sometimes it is necessary to get information from user. For example, request a password. The input function is used to get information from the user:
+```
+print(input('What is your faivorite routing protocol? '))
+#What is your faivorite routing protocol? OSPF
+
+protocol = input('What is your faivorite routing protocol? ')
+print(protocol)
+```
+
+```
+interface = input('Enter interface type and number: ')
+vlan = input('Enter VLAN number: ')
+access_template = ['switchport mode access',
+                  'switchport access vlan {}',
+                  'switchport nonegotiate',
+                  'spanning-tree portfast',
+                  'spanning-tree bpduguard enable']
+print('\n' + '-' * 30)
+print('interface {}'.format(interface))
+print('\n'.join(access_template).format(vlan))
+```
+### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
+အောက်တွင် r1, r2, sw1 တို့အားပေးထားပါသည်။ user ထံမှ input တစ်ခု တောင်းပါ။ ထို input သည် r1 ဖြစ်လျှင် သူနဲ့ သက်ဆိုင်ရာကို ထုတ်ပြပေးရမည်။ r2, sw1 လည်းလျှင်လည်း သူနဲ့ သက်ဆိုင်ရာကို ထုတ်ပြပေးရမည်။ 
+```
+နမူနာ အဖြေ
+$ python task_5_1.py
+Enter name of device: r1
+{"location": "21 New Globe Walk", "vendor": "Cisco", "model": "4451", "ios": "15.4", "ip": "10.255.0.1"}
+```
+```
+london_co = {
+"r1": {
+      "location": "21 New Globe Walk",
+      "vendor": "Cisco",
+      "model": "4451",
+      "ios": "15.4",
+      "ip": "10.255.0.1"
+     },
+"r2": {
+      "location": "21 New Globe Walk",
+      "vendor": "Cisco",
+      "model": "4451",
+      "ios": "15.4",
+      "ip": "10.255.0.2"
+     },
+"sw1": {
+      "location": "21 New Globe Walk",
+      "vendor": "Cisco",
+      "model": "3850",
+      "ios": "3.6.XE",
+      "ip": "10.255.0.101",
+      "vlans": "10,20,30",
+      "routing": True
+     }
+}
+```
 -----
