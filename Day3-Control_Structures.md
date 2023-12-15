@@ -211,3 +211,14 @@ for key, value in r1.items():
     print(key + ' => ' + value)
 #print(r1.items())
 ```
+#### Nested for
+Loops for can be nested in each other.
+In this example, commands is a list of commands to execute on each interface in the fast_int list. The first for loop passes through interfaces in the fast_int list and the second through commands in commands list.
+```
+commands = ['switchport mode access', 'spanning-tree portfast', 'spanning-tree bpduguard enable']
+fast_int = ['0/1', '0/3', '0/4', '0/7', '0/9', '0/10', '0/11']
+for intf in fast_int:
+    print(f'interface FastEthernet {intf}')
+    for command in commands:
+        print(' {}'.format(command))
+```
