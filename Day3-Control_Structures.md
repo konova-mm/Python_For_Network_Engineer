@@ -37,3 +37,51 @@ print(5 <= 10)
 print(8 != 10)
 ```
 
+```
+a = 9
+if a == 10:
+    print('a equal to 10')
+elif a < 10:
+    print('a less than 10')
+else:
+    print('a greater than 10')
+```
+Operator **in** allows checking for the presence of element in a sequence (for example, element in a
+list or substrings in a string):
+```
+print('Fast' in 'FastEthernet')
+print('Gigabit' in 'FastEthernet')
+vlan = [10, 20, 30, 40]
+print(10 in vlan)
+print(50 in vlan)
+```
+
+When used with dictionaries, in condition performs check by dictionary keys
+```
+r1 = {
+    'IOS': '15.4',
+    'IP': '10.255.0.1',
+    'hostname': 'london_r1',
+    'location': '21 New Globe Walk',
+    'model': '4451',
+    'vendor': 'Cisco'}
+print('IOS' in r1)
+print('4451' in r1)
+```
+
+Conditions can also use logical operators and, or, not:
+```
+r1 = {
+    'IOS': '15.4',
+    'IP': '10.255.0.1',
+    'hostname': 'london_r1',
+    'location': '21 New Globe Walk',
+    'model': '4451',
+    'vendor': 'Cisco'}
+vlan = [10, 20, 30, 40]
+print('IOS' in r1 and 10 in vlan)
+print('4451' in r1 and 10 in vlan)
+print('4451' in r1 or 10 in vlan)
+print(not '4451' in r1)
+print('4451' not in r1)
+```
