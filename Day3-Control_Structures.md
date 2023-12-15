@@ -24,3 +24,16 @@ elif a < 10:
 else:
    print('a greater than 10')
 ```
+#### Comparison operators
+Comparison operators can be used in conditions. ( Note that equality is checked by double **==** )
+```
+print(5 > 6)
+print(5 > 2)
+print(5 < 2)
+print(5 == 2)
+print(5 == 5)
+print(5 >= 5)
+print(5 <= 10)
+print(8 != 10)
+```
+
