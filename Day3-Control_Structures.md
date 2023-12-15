@@ -355,4 +355,43 @@ for num2 in range(5):
         print(num2)
 else:
     print("Run out of numbers")
+
+#with continue
+for num3 in range(5):
+    if num3 == 3:
+        continue
+    else:
+        print(num3)
+else:
+    print("Run out of numbers")
 ```
+
+#### while/else
+In loop while:
+- block else is executed if loop has completed iteration of list
+- but it does not execute if break was applied in loop.
+
+```
+i = 0
+while i < 5:
+    print(i)
+    i += 1
+else:
+    print("The End")
+
+#with break
+j = 0
+while j < 5:
+    if j == 3:
+        break
+    else:
+        print(j)
+        j += 1
+else:
+    print("The End")
+
+```
+
+### Working with try/except/else/finally
+#### try/except
+If you repeated examples that were used before, there could be situations where a mistake was made. It was probably a syntax error when a colon was missing, for example. Python generally reacts quite understandably to such errors and they can easily be corrected. However, even if the code is syntactically correct, errors can occur. In Python, these errors are called exceptions.
