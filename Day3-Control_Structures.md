@@ -123,7 +123,7 @@ It is sometimes more convenient to use a ternary operator than an extended form:
 s = [1, 2, 3, 4]
 result = True if len(s) > 5 else False
 ```
-** Note: Python Tutor Website can visualize code execution and allows you to see what happens at every stage of code execution,<https://pythontutor.com/python-compiler.html#mode=edit> ***
+** Note: Python Tutor Website can visualize code execution and allows you to see what happens at every stage of code execution,<https://pythontutor.com/python-compiler.html#mode=edit> **
 -----
 ### for
 Very often the same step should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses for loop for such purposes. For loop iterates elements of specified sequence and performs actions specified for each element. Examples of sequences of elements that can be iterated by for:
