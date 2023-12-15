@@ -123,7 +123,9 @@ It is sometimes more convenient to use a ternary operator than an extended form:
 s = [1, 2, 3, 4]
 result = True if len(s) > 5 else False
 ```
-#### for
+** Note: Python Tutor Website can visualize code execution and allows you to see what happens at every stage of code execution,<https://pythontutor.com/python-compiler.html#mode=edit> ***
+-----
+### for
 Very often the same step should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses for loop for such purposes. For loop iterates elements of specified sequence and performs actions specified for each element. Examples of sequences of elements that can be iterated by for:
 - string
 - list
@@ -150,4 +152,60 @@ upper_words = []
 for word in words:
     upper_words.append(word.upper())
     print(upper_words)
+```
+**For** loop can work with any sequence of elements. For example, the above code used a **list** and the loop iterated over the elements of the list. The for loop works in a similar way with **tuples**. When working with strings for loop iterates through **string** characters.
+```
+for letter in 'Test string':
+    print(letter)
+```
+Sometimes it is necessary to use sequence of numbers in loop. In this case, it is best to use **range**
+```
+for i in range(10):
+    print('interface FastEthernet0/{}'.format(i))
+    #print(f'interface FastEthernet0/{i}')
+```
+loop runs through vlans **list**, so variable can be called vlan
+```
+vlans = [10, 20, 30, 40, 100]
+for vlan in vlans:
+    print('vlan {}'.format(vlan))
+    print(f' name VLAN_{vlan}')
+```
+When a loop runs through dictionary, it actually goes through keys.
+```
+r1 = {
+    'ios': '15.4',
+    'ip': '10.255.0.1',
+    'hostname': 'london_r1',
+    'location': '21 New Globe Walk',
+    'model': '4451',
+    'vendor': 'Cisco'}
+for k in r1:
+    print(k)
+```
+
+If you want to print key-value pairs in loop, you can do this:
+```
+r1 = {
+    'ios': '15.4',
+    'ip': '10.255.0.1',
+    'hostname': 'london_r1',
+    'location': '21 New Globe Walk',
+    'model': '4451',
+    'vendor': 'Cisco'}
+for key in r1:
+    print(key + ' => ' + r1[key])
+```
+Or use **items()** method which allows you to run loop over a key-value pair. Method items() returns a special view object that displays key-value pairs.
+```
+r1 = {
+    'ios': '15.4',
+    'ip': '10.255.0.1',
+    'hostname': 'london_r1',
+    'location': '21 New Globe Walk',
+    'model': '4451',
+    'vendor': 'Cisco'}
+for key, value in r1.items():
+    print(key + ' => ' + value)
+#print(r1.items())
 ```
