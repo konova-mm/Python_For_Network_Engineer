@@ -85,3 +85,69 @@ print('4451' in r1 or 10 in vlan)
 print(not '4451' in r1)
 print('4451' not in r1)
 ```
+#### Operator and
+In Python **and** operator returns not a boolean value but a value of one of operands.If both operands are true, result is the last value. If one of operators is a false, result of expression will be the first false value.
+```
+print('string1' and 'string2')
+print('string1' and 'string2' and 'string3')
+print('' and 'string1')
+print('' and [] and 'string1')
+```
+
+#### Operator or
+Operator **or**, like operator and, returns one of operands value. When checking operands, the first true operand is returned. If all values are false, the last value is returned. An important feature of or operator - operands, which are after the true operand, are not calculated.
+```
+print('' or 'string1')
+print('' or [] or 'string1')
+print('string1' or 'string2')
+print('' or [] or {})
+print('' or sorted([44, 1, 67]))
+print('' or 'string1' or sorted([44, 1, 67]))
+```
+#### Example of if/elif/else statement
+An example of a check_password.py script that checks length of password and whether password contains username.
+```
+username = input('Enter username: ')
+password = input('Enter password: ')
+if len(password) < 8:
+    print('Password is too short')
+elif username in password:
+    print('Password contains username')
+else:
+    print('Password for user {} is set. '.format(username))
+```
+
+#### Ternary expression
+It is sometimes more convenient to use a ternary operator than an extended form:
+```
+s = [1, 2, 3, 4]
+result = True if len(s) > 5 else False
+```
+#### for
+Very often the same step should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses for loop for such purposes. For loop iterates elements of specified sequence and performs actions specified for each element. Examples of sequences of elements that can be iterated by for:
+- string
+- list
+- dictionary
+- range
+- Any Iterable
+
+An example of converting strings in a list to uppercase without for loop
+```
+words = ['list', 'dict', 'tuple']
+upper_words = []
+print(words[0])
+words[0].upper() # converting word to uppercase
+upper_words.append(words[0].upper()) # converting and adding to new list
+print(upper_words)
+upper_words.append(words[1].upper())
+upper_words.append(words[2].upper())
+print(upper_words)
+```
+The same steps with the for loop:
+```
+words = ['list', 'dict', 'tuple']
+upper_words = []
+for word in words:
+    upper_words.append(word.upper())
+    print(upper_words)
+```
