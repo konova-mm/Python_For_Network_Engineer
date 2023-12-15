@@ -222,3 +222,137 @@ for intf in fast_int:
     for command in commands:
         print(' {}'.format(command))
 ```
+#### Combination for and if
+```
+access_template = [
+    "switchport mode access",
+    "switchport access vlan",
+    "spanning-tree portfast",
+    "spanning-tree bpduguard enable",
+    ]
+fast_int = {"access": {"0/12": 10, "0/14": 11, "0/16": 17, "0/17": 150}}
+for intf, vlan in fast_int["access"].items():
+    print("interface FastEthernet" + intf)
+    for command in access_template:
+        if command.endswith("access vlan"):
+            print(" {} {}".format(command, vlan))
+        else:
+            print(" {}".format(command))
+```
+
+### while
+A while loop is another type of loop in Python. In the while loop, as in the if statement, you need to write a condition. If the condition is true, the actions inside the while block are executed. In this case, unlike if, after executing the code in the
+block, while returns to the beginning of the loop. 
+```
+a = 5
+while a > 0:
+    print(a)
+    a -= 1         # This record is equal to: a = a - 1
+```
+
+### break, continue, pass
+Python has several operators that allow to change default loop behavior.
+#### Break operator
+Operator break allows early termination of loop:
+- break breaks current loop and continues executing the next expressions
+- if multiple nested loops are used, break interrupts internal loop and continues to execute expressions following the block. Break can be used in loops for and while
+```
+for loop
+for num in range(10):
+    if num < 7:
+        print(num)
+    else:
+        break
+
+# while loop
+i = 0
+while i < 10:
+    if i == 5:
+        break
+    else:
+        print(i)
+        i += 1
+```
+```
+username = input('Enter username: ')
+password = input('Enter password: ')
+while True:
+    if len(password) < 8:
+        print('Password is too short\n')
+    elif username in password:
+        print('Password contains username\n')
+    else:
+        print('Password for user {} is set'.format(username))
+        # exit while loop
+        break
+    password = input('Enter password once again: ')
+```
+
+#### Continue operator
+Operator **continue** returns control to the beginning of loop. That is, continue allows to «jump» remaining expressions in loop and go to the next iteration.
+```
+for num in range(5):
+    if num == 3:
+        continue
+    else:
+        print(num)
+
+#while
+i = 0
+while i < 6:
+    i += 1
+    if i == 3:
+        print("Skip 3")
+        continue
+        print("No one will see it")
+    else:
+        print("Current value: ", i)
+```
+
+```
+username = input('Enter username: ')
+password = input('Enter password: ')
+password_correct = False
+while not password_correct:
+    if len(password) < 8:
+        print('Password is too short\n')
+    elif username in password:
+        print('Password contains username\n')
+    else:
+        print('Password for user {} is set'.format(username))
+        password_correct = True
+        continue
+    password = input('Enter password once again: ')
+```
+
+#### Pass operator
+Operator pass does nothing. Basically it is a placeholder. For example, pass can help when you need to specify a script  structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
+```
+for num in range(5):
+    if num < 3:
+        pass
+    else:
+        print(num)
+```
+#### for/else, while/else
+In loops for and while you may optionally use else block.
+####for/else
+In loop for:
+- block else is executed if loop has completed iteration of list
+- but it does not execute if break was applied in loop.
+
+```
+for num in range(5):
+    print(num)
+else:
+    print("Run out of numbers")
+
+#with break
+for num2 in range(5):
+    if num2 == 3:
+        break
+    else:
+        print(num2)
+else:
+    print("Run out of numbers")
+```
