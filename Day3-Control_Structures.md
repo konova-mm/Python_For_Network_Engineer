@@ -496,7 +496,9 @@ while True:
     else:
         print("Only digits are supported")
 ```
+
 But the same option without exceptions will not always be simple and understandable. It is important to assess in each specific situation which version of code is more comprehensible, compact and universal - with or without exceptions. If you’ve used some other programming language before, it’s possible that use of exceptions was considered a bad form. In Python this is not true.
+
 -----
 ### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်) 
 ၁။ အောက်ပါ mac List တွင် XXXX:XXXX:XXXX ပုံစံ ပေးထားပါသည်။ သို့သော်လည်း Cisco Equipment များတွင် MAC address ကို XXX.XXXX.XXXX ပုံစံ( dot ) ဖြင့် မြင်တွေ့ရမည် ဖြစ်ပါသည်။ ထို့ကြောင့် အောက်တွင် ပေးထားသော ပုံစံအား cisco ပုံစံ mac address ပြောင်းထားသော List တစ်ခု အဖြစ် ပြောင်းပြီး result ကို output ထုတ်ပြပါ။
@@ -509,3 +511,9 @@ mac = ["aabb:cc80:7000", "aabb:dd80:7340", "aabb:ee80:7000", "aabb:ff80:7000"]
 - IP address သည် 255.255.255.255 ဖြစ်ပါက 'local broadcast' ဟု ထုတ်ပြရမည်။
 - IP address သည် 0.0.0.0 ဖြစ်ပါက 'unassigned' ဟု ထုတ်ပြရမည်။
 - အခြား ပုံစံများ ဖြစ်ပါက 'unused' ဟု ထုတ်ပြရမည်။
+
+၃။ မေးခွန်း(၂) မှ code ကို အသုံးပြုပြီး ip address ကို စစ်ရမည် ဖြစ်ပါသည်။ ip address ကို user မှ ထည့်လိုက်သည့် အခါ -
+- octet နံပတ် ၄ ခု ပါဝင်ရမည်။ ( character များ၊ special symbol များ မပါဝင်ရ)
+- octet တိုင်းကို dot(.) ဖြင့် ပိုင်းခြားထားရမည်
+- octet နံပါတ်တစ်ခုစီတိုင်းသည် 0-255 range အတွင်းရှိရမည်။
+ထိုသို့ရှိသော အခါ "Valid IP address" ဟု ပြသရမည် ဖြစ်ပြီး၊ မဟုတ်ပါက "Invalid IP Address" ဟု ပြသော Python Scriptကို ရေးပါ။
