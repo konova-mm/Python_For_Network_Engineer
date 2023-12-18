@@ -497,5 +497,15 @@ while True:
         print("Only digits are supported")
 ```
 But the same option without exceptions will not always be simple and understandable. It is important to assess in each specific situation which version of code is more comprehensible, compact and universal - with or without exceptions. If you’ve used some other programming language before, it’s possible that use of exceptions was considered a bad form. In Python this is not true.
-
-### Tasks
+-----
+### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်) 
+၁။ အောက်ပါ mac List တွင် XXXX:XXXX:XXXX ပုံစံ ပေးထားပါသည်။ သို့သော်လည်း Cisco Equipment များတွင် MAC address ကို XXX.XXXX.XXXX ပုံစံ( dot ) ဖြင့် မြင်တွေ့ရမည် ဖြစ်ပါသည်။ ထို့ကြောင့် အောက်တွင် ပေးထားသော ပုံစံအား cisco ပုံစံ mac address ပြောင်းထားသော List တစ်ခု အဖြစ် ပြောင်းပြီး result ကို output ထုတ်ပြပါ။
+```
+mac = ["aabb:cc80:7000", "aabb:dd80:7340", "aabb:ee80:7000", "aabb:ff80:7000"]
+```
+၂။ 10.0.1.1 ပုံစံဖြင့် ip တစ်ခုကို user ထံမှ input တောင်းပါ။ အောက်ပါ အချက်များပေါ် မူတည်ပြီး အဖြေကို output ထုတ်ပြပါ။
+- first byte  သည် range 1-223 အတွင်း ဖြစ်ပါက 'unicast' ဟု ထုတ်ပြရမည်။
+- first byte သည် range 224-239 အတွင်း ဖြစ်ပါက 'multicast' ဟု ထုတ်ပြရမည်။
+- IP address သည် 255.255.255.255 ဖြစ်ပါက 'local broadcast' ဟု ထုတ်ပြရမည်။
+- IP address သည် 0.0.0.0 ဖြစ်ပါက 'unassigned' ဟု ထုတ်ပြရမည်။
+- အခြား ပုံစံများ ဖြစ်ပါက 'unused' ဟု ထုတ်ပြရမည်။
