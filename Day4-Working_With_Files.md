@@ -11,9 +11,12 @@ When working with network equipment (and not only), files can be:
   - usually they are structured files in some particular format: YAML, JSON, CSV
 
 - other Python scripts
-  - section **Modules** discusses how to work with modules (other Python scripts)
+-----
 This section covers simple text files. For example, Cisco configuration file.
 There are several aspects to working with files:
 - opening/closing
 - reading
 - writing
+-----
+### File opening
+To start working with a file you have to open it.
