@@ -255,7 +255,7 @@ while a > 0:
 Python has several operators that allow to change default loop behavior.
 #### Break operator
 Operator break allows early termination of loop:
-- break breaks current loop and continues executing the next expressions
+- **break** - breaks current loop and continues executing the next expressions
 - if multiple nested loops are used, break interrupts internal loop and continues to execute expressions following the block. Break can be used in loops for and while
 ```
 for loop
