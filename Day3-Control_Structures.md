@@ -256,9 +256,9 @@ Python has several operators that allow to change default loop behavior.
 #### Break operator
 Operator break allows early termination of loop:
 - **break** - breaks current loop and continues executing the next expressions
-- if multiple nested loops are used, break interrupts internal loop and continues to execute expressions following the block. Break can be used in loops for and while
+- if multiple nested loops are used, break interrupts internal loop and continues to execute expressions following the block. Break can be used in loops **for** and **while**
 ```
-for loop
+#for loop
 for num in range(10):
     if num < 7:
         print(num)
@@ -290,7 +290,7 @@ while True:
 ```
 
 #### Continue operator
-Operator **continue** returns control to the beginning of loop. That is, continue allows to «jump» remaining expressions in loop and go to the next iteration.
+Operator **continue** returns control to the beginning of loop. That is, **continue** allows to «jump» remaining expressions in loop and go to the next iteration.
 ```
 for num in range(5):
     if num == 3:
@@ -327,7 +327,7 @@ while not password_correct:
 ```
 
 #### Pass operator
-Operator pass does nothing. Basically it is a placeholder. For example, pass can help when you need to specify a script  structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
+Operator pass does nothing. Basically it is a placeholder. For example, **pass** can help when you need to specify a script  structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
 ```
 for num in range(5):
     if num < 3:
@@ -338,9 +338,9 @@ for num in range(5):
 #### for/else, while/else
 In loops for and while you may optionally use else block.
 ####for/else
-In loop for:
-- block else is executed if loop has completed iteration of list
-- but it does not execute if break was applied in loop.
+In loop **for**:
+- block **else** is executed if loop has completed iteration of list
+- but it does not execute if **break** was applied in loop.
 
 ```
 for num in range(5):
@@ -369,8 +369,8 @@ else:
 
 #### while/else
 In loop while:
-- block else is executed if loop has completed iteration of list
-- but it does not execute if break was applied in loop.
+- block **else** is executed if loop has completed iteration of list
+- but it does not execute if **break** was applied in loop.
 
 ```
 i = 0
