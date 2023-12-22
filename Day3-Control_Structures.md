@@ -338,7 +338,7 @@ for num in range(5):
 #### for/else, while/else
 In loops for and while you may optionally use else block.
 
-####for/else
+#### for/else
 In loop **for**:
 - block **else** is executed if loop has completed iteration of list
 - but it does not execute if **break** was applied in loop.
