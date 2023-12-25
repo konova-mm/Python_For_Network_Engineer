@@ -112,3 +112,69 @@ f.close()
 ```
 #### writelines
 Method writelines expects list of strings as an argument.
+```
+cfg_lines = ['!',
+            'service timestamps debug datetime msec localtime show-timezone year',
+            'service timestamps log datetime msec localtime show-timezone year',
+            'service password-encryption',
+            'service sequence-numbers',
+            '!',
+            'no ip domain lookup',
+            '!',
+            'ip ssh version 2',
+            '!']
+f = open('r2.txt', 'w')
+f.writelines(cfg_lines)
+f.close()
+#cat r2.txt
+```
+As a result, all lines in the list were written into one line because there was no symbol \n at the end of lines. You can add newline character in different ways. For example, you can loop through a list:
+```
+cfg_lines = ['!',
+            'service timestamps debug datetime msec localtime show-timezone year',
+            'service timestamps log datetime msec localtime show-timezone year',
+            'service password-encryption',
+            'service sequence-numbers',
+            '!',
+            'no ip domain lookup',
+            '!',
+            'ip ssh version 2',
+            '!']
+f = open('r2.txt', 'w')
+f.writelines(cfg_lines)
+f.close()
+#cat r2.txt
+cfg_lines2 = []
+
+for line in cfg_lines:
+    cfg_lines2.append(line + "\n")
+print(cfg_lines2)
+
+```
+If the final list is written anew to the file, then it will already contain newlines
+```
+cfg_lines = ['!',
+            'service timestamps debug datetime msec localtime show-timezone year',
+            'service timestamps log datetime msec localtime show-timezone year',
+            'service password-encryption',
+            'service sequence-numbers',
+            '!',
+            'no ip domain lookup',
+            '!',
+            'ip ssh version 2',
+            '!']
+f = open('r2.txt', 'w')
+f.writelines(cfg_lines)
+f.close()
+#cat r2.txt
+cfg_lines2 = []
+
+for line in cfg_lines:
+    cfg_lines2.append(line + "\n")
+print(cfg_lines2)
+
+f = open('r2.txt', 'w')
+f.writelines(cfg_lines2)
+f.close()
+#cat r2.txt
+```
