@@ -178,3 +178,27 @@ f.writelines(cfg_lines2)
 f.close()
 #cat r2.txt
 ```
+#### File closing
+Method close() met in File writing section. It was there to make sure that the content of file was
+written on disk.
+
+**Note:** In real life, the most common way to close files is use of **with** statement. It’s much more convenient way than to close file explicitly. But since you can also find **close** method in life, this section discusses how to use it. After you finish working with file you have to close it. In some cases Python can close file itself. But it’s best not to count on it and close file explicitly.
+For this, Python has a separate flush method. But since in example with file writing there was no need to perform any more operations, file could be closed.
+```
+f = open('r1.txt', 'r')
+print(f.read())
+```
+The file object has a special closed attribute that lets you check whether a file is closed or not. If
+file is open, it returns False:
+```
+print(f.closed)
+```
+Now close file and check closed again:
+```
+f.close()
+print(f.closed)
+```
+If you try to read file an exception will be raised:
+```
+print(f.read())
+```
