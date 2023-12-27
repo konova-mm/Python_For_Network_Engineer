@@ -364,16 +364,16 @@ Helper address is not set
 ```
 In the first step, each value is stored in a variable and then all three values are displayed. Values
 are displayed when a string has MTU because it is the last string:
-with open('sh_ip_interface.txt') as f:
 ```
-for line in f:
-  if 'line protocol' in line:
-    interface = line.split()[0]
-  elif 'Internet address' in line:
-    ip_address = line.split()[-1]
-  elif 'MTU' in line:
-    mtu = line.split()[-2]
-    print('{:15}{:17}{}'.format(interface, ip_address, mtu))
+with open('sh_ip_interface.txt') as f:
+  for line in f:
+    if 'line protocol' in line:
+      interface = line.split()[0]
+    elif 'Internet address' in line:
+      ip_address = line.split()[-1]
+    elif 'MTU' in line:
+      mtu = line.split()[-2]
+      print('{:15}{:17}{}'.format(interface, ip_address, mtu))
 ```
 It uses the same technique as in previous example but adds another nested dictionary:
 ```
