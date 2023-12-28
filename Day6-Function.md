@@ -1,5 +1,6 @@
 ## Functions
 Function:
+
 • has a name to run this code block as many times as you want
 - launch of function code is called a function call
 • function parameters are usually defined when creating a function.
