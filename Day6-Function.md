@@ -30,8 +30,14 @@ def configure_intf(intf_name, ip, mask):
   print('interface', intf_name)
   print('ip address', ip, mask)
 ```
+
 Function **configure_intf** creates an interface configuration with specified name and IP address. Function has three parameters: intf_name, ip, mask. When function is called the real data will replace these parameters.
+
 -----
+
 **Note:** When function is created, it does nothing yet. Actions listed in it will be executed only when you call function. This is something like ACL in network equipment: when creating ACL in
 configuration, it does nothing until it is applied.
+
 -----
+
+
