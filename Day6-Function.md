@@ -40,3 +40,21 @@ configuration, it does nothing until it is applied.
 -----
 
 #### Function cal
+When calling a function you must specify its name and pass arguments if necessary.
+**Note:** Parameters are variables that are used to create a function. Arguments are the actual values (data) that are passed to functions when called.
+Function configure_intf expects three values when called because it was created with three parameters:
+```
+def configure_intf(intf_name, ip, mask):
+  print('interface', intf_name)
+  print('ip address', ip, mask)
+configure_intf('F0/0', '10.1.1.1', '255.255.255.0')
+```
+The current version of the configure_intf function prints commands to a standard output, commands can be seen but the result of function cannot be saved to a variable.
+For example, sorted function does not simply print the sorting result to standard output stream but returns it, so it can be saved to variable in this way:
+```
+items = [40, 2, 0, 22]
+print(sorted(items))
+
+sorted_items = sorted(items)
+print(sorted_items)
+```
