@@ -58,3 +58,38 @@ print(sorted(items))
 sorted_items = sorted(items)
 print(sorted_items)
 ```
+#### Operator return
+Operator **return** is used to return a value, and at the same time it exits the function. Function can return any Python object. By default, function always returns **None**. In order for configure_intf function to return a value that can then be assigned to a variable, you must use **return** operator:
+```
+def configure_intf(intf_name, ip, mask):
+    config = f'interface {intf_name}\nip address {ip} {mask}'
+    return config
+result = configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
+print(result)
+```
+Now the result variable contains a line with commands to configure interface. In real life, function will almost always return some value. Another important aspect of return operator is that after return the function closes, meaning that
+the expressions that follow return are not executed. For example, in function below the line «Configuration is ready» will not be displayed because it stands after return:
+```
+def configure_intf(intf_name, ip, mask):
+  config = f'interface {intf_name}\nip address {ip} {mask}'
+  return config
+  print('Configuration is ready')
+configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
+```
+Function can return multiple values. In this case, they are separated by a comma after return operator. In fact, function returns tuple:
+```
+def configure_intf(intf_name, ip, mask):
+  config_intf = f'interface {intf_name}\n'
+  config_ip = f'ip address {ip} {mask}'
+  return config_intf, config_ip
+
+result = configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
+result
+
+type(result)
+
+intf, ip_addr = configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
+intf
+ip_addr
+```
+#### Namespace. Scope of variables
