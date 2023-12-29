@@ -441,3 +441,118 @@ In this case, the result will be a dictionary:
 ```
 
 ### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
+၁။ အောက်ပါ ospf.txt ဖိုင်မှ စာကြောင်းများကို ဖော်ပြပါ output format အဖြစ် Stdout ပုံစံဖြင့် print ထုတ်ပြပါ။ ( Stdout - Standard Output )
+ospf.txt
+```
+O        10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0
+O        10.0.28.0/24 [110/31] via 10.0.13.3, 3d20h, FastEthernet0/0
+O        10.0.37.0/24 [110/11] via 10.0.13.3, 3d20h, FastEthernet0/0
+O        10.0.41.0/24 [110/51] via 10.0.13.3, 3d20h, FastEthernet0/0
+O        10.0.78.0/24 [110/21] via 10.0.13.3, 3d20h, FastEthernet0/0
+O        10.0.79.0/24 [110/20] via 10.0.19.9, 4d02h, FastEthernet0/2
+```
+Output Format
+```
+Prefix 10.0.24.0/24
+AD/Metric 110/41
+Next-Hop 10.0.13.3
+Last update 3d18h
+Outbound Interface FastEthernet0/0
+```
+
+၂။ အောက်ဖော်ပြပါ config_sw1.txt ကို အသုံးပြုပြီး stdout အဖြစ် ပြန်လည်ဖော်ပြပါ။ ဖော်ပြသည့်အခါ **!** များကို ဖြုတ်ရမည်၊ Blank Line များ မပါဝင်စေရ၊ config_sw1.txt အား argument အနေဖြင့် အသုံးပြုရမည်။
+config_sw1.txt
+```
+Current configuration : 2033 bytes
+!
+! Last configuration change at 13:11:59 UTC Thu Feb 25 2016
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname sw1
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100
+ switchport mode trunk
+ duplex auto
+ spanning-tree portfast edge trunk
+!
+interface Ethernet0/2
+ duplex auto
+!         
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100
+ duplex auto
+ switchport mode trunk
+ spanning-tree portfast edge trunk
+!         
+interface Ethernet1/0
+ duplex auto
+!
+interface Ethernet1/1
+ duplex auto
+!
+interface Ethernet1/2
+ duplex auto
+!
+interface Ethernet1/3
+ duplex auto
+!
+interface Vlan100
+ ip address 10.0.100.1 255.255.255.0
+!
+!
+alias configure sh do sh 
+alias exec ospf sh run | s ^router ospf
+alias exec bri show ip int bri | exc unass
+alias exec id show int desc
+alias exec top sh proc cpu sorted | excl 0.00%__0.00%__0.00%
+alias exec c conf t
+alias exec diff sh archive config differences nvram:startup-config system:running-config
+alias exec shcr sh run | s ^crypto
+alias exec desc sh int desc | ex down
+alias exec bgp sh run | s ^router bgp
+alias exec xc sh xconnect all
+alias exec vc sh mpls l2tr vc
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input all
+!
+end
+```
+Sample Result Output Format
+```
+$ python task_7_2.py config_sw1.txt
+Current configuration : 2033 bytes
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+hostname sw1
+interface Ethernet0/0
+...
+```
+၃။ မေးခွန်း (၂) တွင် ရရှိသော script အား အောက်ပါ ignore ရှိ စာလုံးများပါသော စာကြောင်းများမထွက်သည့် လုပ်ဆောင်ချက် ထပ်ပေါင်းထည့်ပါ။
+```
+ignore = ["duplex", "alias", "Current configuration"]
+```
+၄။ 
