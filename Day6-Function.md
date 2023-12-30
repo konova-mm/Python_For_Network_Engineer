@@ -92,4 +92,62 @@ intf, ip_addr = configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
 intf
 ip_addr
 ```
+
 #### Namespace. Scope of variables
+Variables in Python have a scope. Depending on location in code where variable has been defined, scope is also defined, it determines where variable will be available. When using variable names in a program, Python searches, creates or changes these names in the corresponding namespace each time. Namespace that is available at each moment depends on area in which code is located. Python has a LEGB rule that it uses for variables search. For example, when accessing a variable within a function, Python searches for a variable in this order in scopes (before the first match):
+- L (local) - in local (within function)
+- E (enclosing) - in local area of outer functions (these are functions within which our function is located)
+- G (global) - in global (in script)
+- B (built-in) - in built-in (reserved Python values)
+Accordingly, there are local and global variables:
+• local variables:
+- variables that are defined within function
+- these variables become unavailable after exit from function
+• global variables:
+- variables that are defined outside the function
+- these variables are ‘global’ only within a module
+- for example, to be available in another module they must be imported
+```
+def configure_intf(intf_name, ip, mask):
+  intf_config = f'interface {intf_name}\nip address {ip} {mask}'
+  return intf_config
+print(intf_config)
+```
+Note that intf_config variable is not available outside of function. To get the result of a function you must call a function and assign result to a variable:
+```
+result = configure_intf('F0/0', '10.1.1.1', '255.255.255.0')
+print(result)
+```
+#### Function parameters and arguments
+The purpose of creating a function is typically to take a piece of code that performs a particular task to a separate object. This allows you to use this piece of code multiple times without having to re-create it in program.
+Typically, a function must perform some actions with input values and produce an output. When working with functions it is important to distinguish:
+- parameters - variables that are used when creating a function.
+- arguments - actual values (data) that are passed to function when called.
+For a function to receive incoming values, it must be created with parameters (func_check_passwd.py file)
+```
+def check_passwd(username, password):
+  if len(password) < 8:
+    print('Password is too short')
+    return False
+  elif username in password:
+    print('Password contains username')
+    return False
+  else:
+    print(f'Password for user {username} has passed all checks')
+    return True
+```
+In this case, function has two parameters: username and password. Function checks password and returns False if checks fail and True if password passed checks:
+```
+print(check_passwd('nata', '12345'))
+print(check_passwd('nata', '12345lsdkjflskfdjsnata'))
+print(check_passwd('nata', '12345lsdkjflskfdjs'))
+```
+When defining a function in this way it is necessary to pass both arguments. If only one argument is passed, there is an error:
+```
+print(check_passwd('nata'))
+```
+#### Function parameter types
+When creating a function you can specify which arguments must be passed and which must not. Accordingly, a function can be created with:
+- required parameters
+- optional parameters (with default values)
+
