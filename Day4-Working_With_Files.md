@@ -555,4 +555,4 @@ interface Ethernet0/0
 ```
 ignore = ["duplex", "alias", "Current configuration"]
 ```
-၄။ 
+၄။ မေးခွန်း (၃) တွင် ရရှိသော output အား Stdout မဖြစ်မထုတ်ပဲ output_config.txt file အဖြစ် သိမ်းဆည်းပါ။
