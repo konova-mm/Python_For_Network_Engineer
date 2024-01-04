@@ -151,3 +151,99 @@ When creating a function you can specify which arguments must be passed and whic
 - required parameters
 - optional parameters (with default values)
 
+**Required parameters** - determine which arguments must be passed to functions. At the same time, they need to be passed exactly as many as parameters of function are specified (you cannotspecify more or less).
+```
+def check_passwd(username, password):
+    if len(password) < 8:
+        print('Password is too short')
+        return False
+    elif username in password:
+        print('Password contains username')
+        return False
+    else:
+        print(f'Password for user {username} has passed all checks')
+        return True
+
+check_passwd("nova", "12345")
+#print(check_passwd("nova", "12345"))
+```
+**Optional parameters (default parameters)** - When creating a function you can specify default value for parameter in this way: def check_passwd(username, password, min_length=8). In this case, min_length option is specified with default value and may not be passed when a function is called.
+```
+def check_passwd(username, password, min_length=8):
+  if len(password) < min_length:
+    print('Password is too short')
+    return False
+  elif username in password:
+    print('Password contains username')
+    return False
+  else:
+    print(f'Password for user {username} has passed all checks')
+    return True
+check_passwd("nova", "12345")
+
+#check_passwd('nata', '12345', 3)
+#default value the corresponding argument can be omitted when a function is called if default value fits you
+```
+
+#### Function argument types
+When a function is called the arguments can be passed in two ways:
+• positional
+• keyword
+Positional and keyword arguments can be mixed when calling a function. That is, it is possible to use both methods when passing arguments of the same function. In this process, Positional arguments must be indicated before keyword arguments.
+
+**Positional** arguments when calling a function must be passed in the correct order (therefore they are called positional arguments).
+```
+#If you swap arguments when calling a function the error will likely occur depending on function.
+def check_passwd(username, password):
+    if len(password) < 8:
+        print('Password is too short')
+        return False
+    elif username in password:
+        print('Password contains username')
+        return False
+    else:
+        print(f'Password for user {username} has passed all checks')
+        return True
+
+check_passwd("nova", "12345")
+```
+**Keyword arguments:**
+• are passed with name of argument
+• thus they can be passed in any order
+If both arguments are keyword, they can be passed in any order:
+```
+check_passwd(password='12345', username='nata', min_length=4)
+```
+note that first there should always be positional arguments and then keyword arguments.
+If you do the opposite, there’s an error:
+```
+check_passwd(password='12345', username='nata', 4)
+```
+But in that combination it works:
+```
+check_passwd('nata', '12345', min_length=3)
+```
+In real life, it is often better to specify flags (parameters with True/False values) or numerical values as a keyword argument. If you set a good name for the parameter you can immediately know by its name what it does.
+For example, you can add a flag that will control whether or not a username should be checked in password
+```
+def check_passwd(username, password, min_length=8, check_username=True):
+  if len(password) < min_length:
+    print('Password is too short')
+    return False
+  elif check_username and username in password:
+    print('Password contains username')
+    return False
+  else:
+    print(f'Password for user {username} has passed all checks')
+    return True
+
+print(check_passwd('nata', '12345nata', min_length=3))
+print(check_passwd('nata', '12345nata', min_length=3, check_username=True))
+```
+If you specify a value equal to False the verification will not be performed:
+```
+print(check_passwd('nata', '12345nata', min_length=3, check_username=False))
+```
+#### Variable length arguments
+Sometimes it is necessary to make function accept not a fixed number of arguments, but any number. For such a case, in Python it is possible to create a function with a special parameter that accepts variable length arguments. This parameter can be both keyword and positional.
+
