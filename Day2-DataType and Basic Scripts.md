@@ -326,11 +326,11 @@ List in Python is:
 #### Creating a list using a literal
 ```
 vlan = [10, 20, 30, 50]
-print(vlans)
-print(vlan[1::]
-print(vlan[-1]
-print(vlan[::-1]
-print(lent(vlan))
+print(vlan)
+print(vlan[1::])
+print(vlan[-1])
+print(vlan[::-1])
+print(len(vlan))
 print(sorted(vlan))
 ```
 
@@ -367,8 +367,7 @@ print(sorted(names))
 ```
 
 ### List methods
-List is a mutable data type, so it is important to note that most list methods change a list in place
-without returning anything.
+List is a mutable data type, so it is important to note that most list methods change a list in place without returning anything.
 
 Method **join** collects a list of strings into one string with separator specified before join. Method **append** adds specified item to the end of list.
 ```
@@ -379,7 +378,7 @@ vlans.append('40')
 print(vlans)
 ```
 
-To combine two lists you can use one of two methods: **extend** method or **addition** operation. These methods have an important difference: extend changes list to which method is applied and addition returns a new list that consists of two.
+To combine two lists you can use one of two methods: **extend** method or **addition** operation. These methods have an important difference: **extend** changes list to which method is applied and **addition** returns a new list that consists of two.
 ```
 vlans = ['10', '20', '30', '100-200']
 vlans2 = ['300', '400', '500']
