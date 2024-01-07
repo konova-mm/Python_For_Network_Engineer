@@ -307,8 +307,8 @@ IP address:
 ```
 
 #### strings concatenation
-Literal strings concatenation
-Python has very convenient functionality — literal strings concatenation
+Literal strings concatenation Python has very convenient functionality 
+```
 s = ('Test' 'String')
 print(s)
 s = 'Test' 'String'
@@ -316,8 +316,8 @@ print(s)
 s = ('Test'
      'String')
 print(s)     
-
-
+```
+-----
 ### List
 List in Python is:
 - sequence of elements separated by comma and enclosed in square brackets
