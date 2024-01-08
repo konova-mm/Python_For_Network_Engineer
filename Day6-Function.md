@@ -246,4 +246,195 @@ print(check_passwd('nata', '12345nata', min_length=3, check_username=False))
 ```
 #### Variable length arguments
 Sometimes it is necessary to make function accept not a fixed number of arguments, but any number. For such a case, in Python it is possible to create a function with a special parameter that accepts variable length arguments. This parameter can be both keyword and positional.
+#### Variable length positional arguments
+Parameter that takes positional variable length arguments is created by adding an asterisk before parameter name. Parameter can have any name but by agreement *args is the most common name.
+```
+def sum_arg(a, *args):
+  print(a, args)
+  return a + sum(args)
+```
+Function sum_arg is created with two parameters:
+• parameter a
+– if passed as positional argument, should be first
+– if passed as a keyword argument, the order does not matter
+• parameter *args - expects variable length arguments
+– all other arguments as a tuple
+– these arguments may be missed
+Call a function with different number of arguments:
+```
+print(sum_arg(1, 10, 20, 30))
+print(sum_arg(1, 10))
+print(sum_arg(1))
+```
+You can also create such a function
+```
+def sum_arg(*args):
+  print(args)
+  return sum(args)
 
+print(sum_arg(1, 10, 20, 30))
+print(sum_arg())
+```
+#### Keyword variable length arguments
+Parameter that accepts keyword variable length arguments is created by adding two asterisk in front of parameter name. Name of parameter can be any but by agreement most commonly use name **kwargs (from keyword arguments).
+```
+def sum_arg(a, **kwargs):
+  print(a, kwargs)
+  return a + sum(kwargs.values())
+```
+Function sum_arg is created with two parameters:
+• parameter a
+– if passed as positional argument, should be first
+– if passed as a keyword argument, the order does not matter
+• parameter **kwargs - expects keyword variable length arguments
+– all other keyword arguments as a dictionary
+– these arguments may be missed
+Calling a function with different number of keyword arguments:
+```
+print(sum_arg(a=10, b=10, c=20, d=30))
+print(sum_arg(b=10, c=20, d=30, a=10))
+```
+
+#### Unpacking arguments
+In Python the expressions *args and **kwargs allow for another task - unpacking arguments. So far we’ve called all functions manually. Hence, we passed on all relevant arguments. In reality, it is usually necessary to pass data to function programmatically. And often data comes in the form of a Python object.
+#### Unpacking positional arguments
+For example, when formatting strings you often need to pass multiple arguments to format method.
+And often these arguments are already in list or tuple. To pass them to format method you have to use indexes:
+```
+items = [1, 2, 3]
+print('One: {}, Two: {}, Three: {}'.format(items[0], items[1], items[2]))
+```
+
+Instead, you can take advantage of unpacking argument and do this:
+```
+items = [1, 2, 3]
+print('One: {}, Two: {}, Three: {}'.format(*items))
+```
+```
+def config_interface(intf_name, ip_address, mask):
+  interface = f'interface {intf_name}'
+  no_shut = 'no shutdown'
+  ip_addr = f'ip address {ip_address} {mask}'
+  result = [interface, no_shut, ip_addr]
+  return result
+```
+Function expects such arguments:
+• intf_name - interface name
+• ip_address - IP address
+• mask - subnet mask
+Function returns a list of strings to configure interface:
+```
+config_interface('Fa0/1', '10.0.1.1', '255.255.255.0')
+config_interface('Fa0/10', '10.255.4.1', '255.255.255.0')
+```
+Suppose you call a function and pass it information that has been obtained from another source, for example from database. For example, interfaces_info list contains parameters for configuring interfaces:
+```
+interfaces_info = [['Fa0/1', '10.0.1.1', '255.255.255.0'],
+                ['Fa0/2', '10.0.2.1', '255.255.255.0'],
+                ['Fa0/3', '10.0.3.1', '255.255.255.0'],
+                ['Fa0/4', '10.0.4.1', '255.255.255.0'],
+                ['Lo0', '10.0.0.1', '255.255.255.255']]
+```
+
+
+If you go through list in the loop and pass nested list as a function argument, an error will occur:
+```
+for info in interfaces_info:
+  print(config_interface(info))
+```
+
+Error is quite logical: function expects three arguments and it is given 1 argument - a list. In such a situation it is necessary to unpack arguments. Just add * before passing the list as an argument and there is no error anymore:
+```
+for info in interfaces_info:
+  print(config_interface(*info))
+```
+Python will unpack info list itself and pass list elements to function as arguments.
+
+#### Unpacking keyword alrguments
+Similarly, you can unpack dictionary to pass it as keyword arguments.
+```
+def check_passwd(username, password, min_length=8, check_username=True):
+  if len(password) < min_length:
+    print('Password is too short')
+    return False
+  elif check_username and username in password:
+    print('Password contains username')
+    return False
+  else:
+    print(f'Password for user {username} has passed all checks')
+    return True
+```
+
+List of dictionaries username_passwd where username and password are specified:
+```
+username_passwd = [{'username': 'cisco', 'password': 'cisco'},
+                  {'username': 'nata', 'password': 'natapass'},
+                  {'username': 'user', 'password': '123456789'}]
+```
+If you pass dictionary to check_passwd function, there is an error:
+```
+for data in username_passwd:
+  check_passwd(data)
+```
+Error is because the function has taken dictionary as one argument and believes that it lacks only password argument.
+If you add ** before passing a dictionary to function, function will work properly:
+```
+for data in username_passwd:
+  print(data)
+  check_passwd(**data)
+```
+#### Example of using variable length keyword arguments and unpacking arguments
+Using variable length arguments and unpacking arguments you can pass arguments between functions.
+```
+def check_passwd(username, password, min_length=8, check_username=True):
+  if len(password) < min_length:
+    print('Password is too short')
+    return False
+  elif check_username and username in password:
+    print('Password contains username')
+    return False
+  else:
+    print(f'Password for user {username} has passed all checks')
+    return True
+check_passwd('nata', '12345', min_length=3)
+check_passwd('nata', '12345nata', min_length=3)
+check_passwd('nata', '12345nata', min_length=3, check_username=False)
+check_passwd('nata', '12345nata', min_length=3, check_username=True)
+```
+We will create add_user_to_users_file function that requests password for specified user, checks it and requests it again if password has not been checked or writes user and password to file if password has been verified 
+```
+def add_user_to_users_file(user, users_filename='users.txt'):
+  while True:
+    passwd = input(f'Enter password for user {user}: ')
+    if check_passwd(user, passwd):
+      break
+  with open(users_filename, 'a') as f:
+    f.write(f'{user},{passwd}\n')
+add_user_to_users_file('nata')
+#cat users.txt
+```
+
+In this version of add_user_to_users_file() function, it is not possible to regulate the minimum password length and whether to verify the presence of a username in password. In the following version of add_user_to_users_file() function, these features are added:
+```
+def add_user_to_users_file(user, users_filename='users.txt', min_length=8, checkusername=True):
+  while True:
+    passwd = input(f'Enter password for user {user}: ')
+    if check_passwd(user, passwd, min_length, check_username):
+      break
+  with open(users_filename, 'a') as f:
+    f.write(f'{user},{passwd}\n')
+add_user_to_users_file('nata', min_length=5)
+```
+You can now specify min_length or check_username when calling a function. However, it was necessary to repeat parameters of check_passwd function in defining of add_user_to_users_file function. This is not very good and when there are many parameters it is just inconvenient, especially considering that check_passwd function can have other parameters. This happens quite often and Python has a common solution to this problem: all arguments for internal function (in this case it is check_passwd) will be taken in **kwargs. Then, when calling check_passwd() function they will be unpacked into keyword arguments by the same **kwargs syntax.
+```
+def add_user_to_users_file(user, users_filename='users.txt', **kwargs):
+  while True:
+    passwd = input(f'Enter password for user {user}: ')
+    if check_passwd(user, passwd, **kwargs):
+      break
+  with open(users_filename, 'a') as f:
+    f.write(f'{user},{passwd}\n')
+add_user_to_users_file('nata', min_length=5)
+add_user_to_users_file('nata', min_length=5)
+```
+### Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
