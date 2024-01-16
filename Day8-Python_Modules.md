@@ -151,6 +151,7 @@ Now the output contains only information from script getcorrect__ip.py. In gener
 output stream inside if __name__ == '__main__' block.
 **Warning**: Starting with Section 11, for tests to work correctly you have to always write a function call in task file within if __name__ == '__main__' block. The absence of this block
 will not cause errors in all tasks, but it will still avoid problems.
+
 -----
 Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
 -----
