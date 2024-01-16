@@ -107,7 +107,7 @@ def return_correct_ip(ip_addresses):
   return [ip for ip in ip_addresses if check_ip(ip)]
 return_correct_ip(ip_list)
 ```
-#### if __name__ == "__main__"
+#### if \_\_name__ == "\_\_main__"
 Often script can be executed independently and can be imported as a module by another script. Since importing a script runs this script, it is often necessary to specify that some strings should not
 be executed when importing. In previous example there were two scripts: check_ip_function.py and get_correct_ip.py. And when starting get_correct_ip.py, print() from check_ip_function.py was displayed.
 Python has a special technique that specifies that a code must not be executed at import: all lines that are in if __name__ == '__main__' block are not executed at import.
