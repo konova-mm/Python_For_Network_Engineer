@@ -156,3 +156,103 @@ will not cause errors in all tasks, but it will still avoid problems.
 Tasks (Task များအားလုံးအား သင်ထားပြီးသော သင်ခန်းစာများကိုသာ အသုံးချ ဖြေဆိုရမည်)
 -----
 ### Useful modules
+#### subprocess
+Subprocess module allows you to create new processes. It can then connect to standard input/output/error streams and receive a return code.
+Subprocess can for example execute any Linux commands from script. And depending on situation, get the output or just check that command has been performed correctly.
+Function subprocess.run()
+Function subprocess.run() is the main way of working with subprocess module.
+The easiest way to use a function is to call it in this way:
+```
+import subprocess
+result = subprocess.run('ls')
+print(result)
+```
+The result variable now contains a special CompletedProcess object. From this object you can get information about execution of process, such as return code:
+```
+print(result.returncode)
+```
+Code 0 means that program was executed successfully. If it is necessary to call a command with arguments, it should be passed in this way (as a list):
+```
+result = subprocess.run(['ls', '-ls'])
+print(result)
+```
+Another feature of run() If you try to run a ping command, for example, this aspect will be visible:
+```
+result = subprocess.run(['ping', '-c', '3', '-n', '8.8.8.8'])
+print(result)
+```
+#### Getting the result of a command execution
+By default, run() function returns the result of a command execution to a standard output stream. If you want to get the result of command execution, add stdout argument with value subprocess.PIPE:
+```
+result = subprocess.run(['ls', '-ls'], stdout=subprocess.PIPE)
+print(result.stdout)
+```
+Now you can get the result of command executing in this way:
+Note letter b before line. It means that module returned the output as a byte string. There are two options to translate it into unicode:
+• decode received string
+• specify encoding argument
+Example with decode:
+```
+print(result.stdout.decode('utf-8'))
+```
+Example with encoding:
+```
+result = subprocess.run(['ls', '-ls'], stdout=subprocess.PIPE, encoding='utf-8')
+print(result.stdout)
+```
+#### Output disabling
+Sometimes it is enough to get only return code and need to disable output of execution result on standard output stream. This can be done by passing to run() function the stdout argument with value subprocess.DEVNULL:
+```
+result = subprocess.run(['ls', '-ls'], stdout=subprocess.DEVNULL)
+print(result.stdout)
+print(result.returncode)
+```
+#### Working with standard error stream
+If command was executed with error or failed, the output of command will fall on standard error stream. This can be obtained in the same way as the standard output stream:
+```
+result = subprocess.run(['ping', '-c', '3', '-n', 'a'], stderr=subprocess.PIPE, encoding='utf-8')
+```
+Now result.stdout has empty string and result.stderr has standard output stream:
+```
+print(result.stdout)
+print(result.stderr)
+print(result.returncode)
+```
+### Examples of module use
+Example of subprocess module use (subprocess_run_basic.py file):
+```
+import subprocess
+reply = subprocess.run(['ping', '-c', '3', '-n', '8.8.8.8'])
+if reply.returncode == 0:
+  print('Alive')
+else:
+  print('Unreachable')
+```
+That is, the result of command execution is printed to standard output stream. Function ping_ip() checks the availability of IP address and returns True and stdout if address is available, or False and stderr if address is not available (subprocess_ping_function.py file):
+```
+import subprocess
+def ping_ip(ip_address):
+  """
+  Ping IP address and return tuple:
+  On success:
+    * True
+    * command output (stdout)
+  On failure:
+    * False
+    * error output (stderr)
+  """
+  reply = subprocess.run(['ping', '-c', '3', '-n', ip_address],
+  stdout=subprocess.PIPE,
+  stderr=subprocess.PIPE,
+  encoding='utf-8')
+  if reply.returncode == 0:
+    return True, reply.stdout
+  else:
+    return False, reply.stderr
+print(ping_ip('8.8.8.8'))
+print(ping_ip('a'))
+```
+Based on this function you can make a function that will check list of IP addresses and return as a result two lists: reachable and unreachable addresses.
+If number of IP addresses to check is large, you can use threading or multiprocessing modules to speed up verification.
+
+### os
