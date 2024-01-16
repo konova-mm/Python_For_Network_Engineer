@@ -256,3 +256,95 @@ Based on this function you can make a function that will check list of IP addres
 If number of IP addresses to check is large, you can use threading or multiprocessing modules to speed up verification.
 
 ### os
+The os module allows you to work with the file system, with the environment, and manage processes.
+```
+import os
+```
+#### os.environ
+os.environ returns a dictionary with environment variables and their values. You can use square brackets to get variable if the environment variable definitely exists (an exception will be raised if the variable does not exist).
+```
+os.environ["HOME"]
+os.environ["TOKEN"]
+```
+Or use the get method, then if there is no environment variable, None is returned:
+```
+os.environ.get("HOME")
+os.environ.get("TOKEN")
+```
+#### Note: Technically, os.environ returns an object of type mapping, but at this point it’s easier to think of it as a dictionary.
+
+Environment variables are read the first time the os module is imported. If some variables were added while the script was running, they will not be available through os.environ.
+
+#### os.mkdir
+os.mkdir allows you to create a directory:
+```
+print(os.mkdir('test'))
+#ls -ls
+```
+
+#### os.listdir
+The listdir function returns a list of files and subdirectories in the specified directory. The order of the files in the list is arbitrary, if you need to sort them, you can use the sorted function.
+```
+print(os.listdir("Nova"))
+print*sorted(os.listdir("Nova")))
+```
+The current directory can be specified as "." or call listdir with no arguments:
+```
+print(os.listdir(.))
+print(os.listdir())
+```
+#### os.path
+Different operating systems (OS) have different path naming conventions, so there are multiple versions of the os.path module in the standard library. The os module automatically loads the necessary part to work with the current OS. For example, when running the same functions of the os module on Windows and Linux, different values will be considered as the path separator. If you need to work on Linux with Windows paths and vice versa, you can use the posixpath, ntpath modules instead of os.path.
+
+#### os.path.exists
+The os.path.exists function checks if the specified path exists and returns True if it exists and False otherwise:
+```
+print(os.path.exists('test'))
+if not os.path.exists('test'):
+  print(os.mkdir('test'))
+```
+#### os.path.isdir, os.path.isfile
+The os.path.isdir function returns True if the path leads to a directory, False otherwise:
+```
+print(os.path.isdir("08_functions"))
+print(os.path.isdir("/home/nata/repos/pyneng-tasks/exercises/08_functions/"))
+print(os.path.isdir("/home/nata/repos/pyneng-tasks/exercises/08_functions/task_9_1.py"))
+print(os.path.isdir("08_functions/task_9_1.py"))
+```
+The os.path.isfile function returns True if the path leads to a file and False otherwise:
+```
+os.path.isfile("09_functions/task_9_1.py")
+os.path.isfile("09_functions/")
+```
+Using the checks os.path.isdir, os.path.isfile and os.listdir, you can get lists of files and directories (in the example for the current directory).
+List of directories in the current directory:
+```
+dirs = [d for d in os.listdir('.') if os.path.isdir(d)]
+print(dirs)
+```
+List of files in the current directory:
+```
+files = [f for f in os.listdir('.') if os.path.isfile(f)]
+print(files)
+```
+#### os.path.split
+The os.path.split function splits the path into the “main part” and the end of the path at the last and returns a tuple of two elements. This will automatically use a backslash for Windows. If there is no slash at the end of the path, the division will be like this
+```
+print(os.path.split("book/25_additional_info/README.md"))
+print(os.path.split("book/25_additional_info"))
+```
+If the path ends with a slash, the second element of the tuple will be an empty string:
+```
+print(os.path.split("book/25_additional_info/"))
+print(os.path.split("book/"))
+```
+If the path ends with a slash, the second element of the tuple will be an empty string:
+```
+print(os.path.split("README.md"))
+```
+#### os.path.abspath
+The os.path.abspath function returns the absolute path for the specified file or directory:
+```
+print(os.path.abspath("08_functions"))
+print(os.path.abspath("."))
+```
