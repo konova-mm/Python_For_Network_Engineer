@@ -426,6 +426,7 @@ Dictionaries are mutable ordered data type:
 - since dictionaries are mutable, dictionary items can be changed, added, removed
 - key must be an immutable object: number, string, tuple
 - value can be data of any type
+
 **Note**: In other programming languages a similar dictionary can be called an associative array,
 hash, or hash table.
 
